@@ -9,20 +9,22 @@
 
 var detectNetwork = function(cardNumber) {
   
-let prefix = cardNumber[0]+cardNumber[1]
-let firstNum = cardNumber[0]
-
-if (cardNumber.length === 14 && (prefix === '38' || prefix === '39')) {
-    return 'Diner\'s Club'
-} else if ((prefix === '34' || prefix === '37') && cardNumber.length === 15) {
-    return 'American Express'
-} else if (firstNum === '4' && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19 )) {
-    return 'Visa'
-}
-
+    let p = cardNumber[0]+cardNumber[1]
+    let firstNum = cardNumber[0]
+     
+    
+    
+    if (cardNumber.length === 14 && (p === '38' || p === '39')) {
+        return 'Diner\'s Club'
+    } else if ((p === '34' || p === '37') && cardNumber.length === 15) {
+        return 'American Express'
+    } else if (firstNum === '4' && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19 )) {
+        return 'Visa'
+    } else if ((p == '51' || p == '52' || p == '53' || p == '54' || p == '55') && cardNumber.length === 16) {
+        return 'Mastercard'
+    }
    
-};
 
-console.log(detectNetwork('3345678988012345'))
-
-
+    };
+    
+  detectNetwork('5212345678901234')
