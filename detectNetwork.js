@@ -14,7 +14,7 @@ var detectNetwork = function(cardNumber) {
      
     
     
-    if (cardNumber.length === 14 && (p === '38' || p === '39')) {
+    if (cardNumber.length === 14 && (p == '38' || p == '39')) {
         return 'Diner\'s Club'
     } else if ((p === '34' || p === '37') && cardNumber.length === 15) {
         return 'American Express'
