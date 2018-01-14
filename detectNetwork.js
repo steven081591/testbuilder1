@@ -7,24 +7,24 @@
 //   1. The first few numbers (called the prefix)
 //   2. The number of digits in the number (called the length)
 
+
 var detectNetwork = function(cardNumber) {
-  
-    let p = cardNumber[0]+cardNumber[1]
-    let firstNum = cardNumber[0]
+    let prefix1 = Number(cardNumber.slice(0,1));
+    let prefix2 = Number(cardNumber.slice(0,2));
+    
      
+   
     
-    
-    if (cardNumber.length === 14 && (p == '38' || p == '39')) {
-        return 'Diner\'s Club'
-    } else if ((p === '34' || p === '37') && cardNumber.length === 15) {
-        return 'American Express'
-    } else if (firstNum === '4' && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19 )) {
-        return 'Visa'
-    } else if ((p == '51' || p == '52' || p == '53' || p == '54' || p == '55') && cardNumber.length === 16) {
-        return 'Mastercard'
+    if (cardNumber.length === 14 && (prefix2 === 38 || prefix2 === 39)) {
+        return 'Diner\'s Club';
+    } else if ((prefix2 === 34 || prefix2 === 37) && cardNumber.length === 15) {
+        return 'American Express';
+    } else if (prefix1 === 4 && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19 )) {
+        return 'Visa';
+    } else if ((prefix2 === 51 || prefix2 === 52 || prefix2 === 53 || prefix2 === 54 || prefix2 === 55) && cardNumber.length === 16) {
+        return 'MasterCard';
     }
    
 
     };
     
-  detectNetwork('5212345678901234')
