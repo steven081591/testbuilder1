@@ -14,7 +14,7 @@ var detectNetwork = function(cardNumber) {
     let prefix2 = Number(cardNumber.slice(0,2));
     let prefix3 = Number(cardNumber.slice(0,3));
     let prefix4 = Number(cardNumber.slice(0,4));
-     
+
    
     if (len === 14 && (prefix2 === 38 || prefix2 === 39)) {
         return 'Diner\'s Club';
@@ -32,3 +32,4 @@ var detectNetwork = function(cardNumber) {
 
 };
 
+console.log(detectNetwork('6518123456789012'))
