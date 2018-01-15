@@ -120,11 +120,11 @@ describe('MasterCard', function() {
   var should = require('chai').should();
   
   it('has a prefix of 54 and a length of 16', function() {
-    detectNetwork('5412345678901234').should.equal('Mastercard');
+    detectNetwork('5412345678901234').should.equal('MasterCard');
   });
  
   it('has a prefix of 55 and a length of 16', function() {
-    detectNetwork('5512345678901234').should.equal('Mastercard');
+    detectNetwork('5512345678901234').should.equal('MasterCard');
   })
  
 });
@@ -139,39 +139,39 @@ describe('Discover', function() {
   });
 
   it('has a prefix of 6011 and a length of 19', function(){
-    detectNetwork('6011123456789012345').should.equal('Discover')
+    detectNetwork('6011123456789012345').should.equal('Discover');
   });
 
   it('has a prefix of 65 and a length of 16', function(){
-    detectNetwork('6539132153435643').should.equal('Discover')
+    detectNetwork('6539123456789012').should.equal('Discover');
   });
 
   it('has a prefix of 65 and a length of 19', function(){
-    detectNetwork('6539132153435643444').should.equal('Discover')
+    detectNetwork('6512123456789012345').should.equal('Discover');
   });
 
-    for (var prefix = 644; prefix <= 649; prefix++) {
-        (function(prefix) {
-          it('has a prefix of ' + prefix + ' and a length of 16'), function(){
-         detectNetwork(parseInt(prefix) + '1234567891234').should.equal('Discover')
-          };
-          
-          it('has a prefix of ' + prefix + ' and a length of 19'), function() {
-         detectNetwork(parseInt(prefix) + '1234567889012333').should.equal('Discover')
-          };
-        })(prefix);
-      }
-   
+  for (var prefix = 644; prefix <= 649; prefix++) {
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 16'), function(){
+     detectNetwork(prefix + '1234567890123').should.equal('Discover');
+      };
+      
+      it('has a prefix of ' + prefix + ' and a length of 19'), function() {
+     detectNetwork(prefix + '1234567890123456').should.equal('Discover');
+      };
+    })(prefix);
+  }
 
 });
 
 
 describe('Maestro', function() {
   var expect = chai.expect;
-  var prefix = ['5018', '5020', '5038', '6304']
-  var string15 = '123456789123456'
   
-  for (var p in prefix) {
+  var prefix = ['5018', '5020', '5038', '6304']
+  var string15 = '123456789012345'
+  
+  for (var p of prefix) {
     for (var x = 12; x<=19; x++) {
       it('has a prefix of '+prefix[p]+' and a length of '+x, function(){
         expect(detectNetwork(prefix[p] + string15).to.equal('Maestro'))
