@@ -1,7 +1,3 @@
-
-var FILL_ME_IN = 'Fill this value in';
-
-
 function getRandom(length) {
   return Math.floor(Math.pow(10, length - 1) + Math.random() * 9 * Math.pow(10, length - 1));
 }
@@ -13,12 +9,6 @@ function prefixGenerator(start, stop) {
   }
   return allnum;
 }
-
-
-// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
-// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
-
-
 
 
 var cards = [
@@ -64,7 +54,6 @@ var cards = [
   }
 ]
 
-// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
 
 function allCards(name) {
 
@@ -80,17 +69,12 @@ function allCards(name) {
 }
 
 
-
-//console.log(allCards())
-
 function testBuilder(prefix, length, cardName){
   var expect = chai.expect
   it('has a prefix '+prefix+ ' and a length of '+length, function(){
     expect(detectNetwork(prefix + getRandom(length - prefix.length).toString())).to.equal(cardName)
   });
 }
-
-
 
 
 describe('Diner\'s Club', function() {
@@ -125,7 +109,4 @@ describe('Discover', function() {
    allCards('Switch')
  })
 
-// Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
 
-// describe('should support China UnionPay')
-// describe('should support Switch')
