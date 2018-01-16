@@ -56,12 +56,13 @@ var detectNetwork = function(cardNumber) {
     let prefix4 = Number(cardNumber.slice(0,4));
     let prefix6 = Number(cardNumber.slice(0,6));
     
-    if ((prefix4 > prefix1) && (prefix4 === 4903 || prefix4 === 4905 || prefix4 === 4911 || prefix4 === 6333 || prefix4 === 6759 || prefix4 === 4936 || prefix6 === 564182 || prefix6 === 633110 && (len === 16 || len === 18 || len === 19 ) )) {
-        return 'Switch';
-    } else if (len === 14 && (prefix2 === 38 || prefix2 === 39)) {
+    
+           if (len === 14 && (prefix2 === 38 || prefix2 === 39)) {
         return 'Diner\'s Club';
     } else if ((prefix2 === 34 || prefix2 === 37) && len === 15) {
         return 'American Express';
+    }else if ((prefix4 > prefix1 && prefix4 === 4903 || prefix4 === 4905 || prefix4 === 4911 || prefix4 === 6333 || prefix4 === 6759 || prefix4 === 4936 || prefix6 === 564182 || prefix6 === 633110 && (len === 16 || len === 18 || len === 19 ) )) {
+        return 'Switch';
     } else if (prefix1 === 4 && (len === 13 || len === 16 || len === 19 )) {
         return 'Visa';
     } else if ((prefix2 === 51 || prefix2 === 52 || prefix2 === 53 || prefix2 === 54 || prefix2 === 55) && len === 16) {
@@ -75,7 +76,7 @@ var detectNetwork = function(cardNumber) {
     for (var p = 622126; p <= 622925; p++) {
       let num = Number(p)
         if ((num === prefix6) && (len === 16 || len === 17 || len === 18 || len === 19)) {
-            return 'ChinaPay UnionPay'
+            return 'China UnionPay'
         }
     }  
     
@@ -89,7 +90,7 @@ var detectNetwork = function(cardNumber) {
     for (var p = 6282; p <= 6288; p++) {
         let num = Number(p)
           if ((num === prefix4) && (len === 16 || len === 17 || len === 18 || len === 19)) {
-              return 'ChinaPay UnionPay'
+              return 'China UnionPay'
           }
       }
 
@@ -97,4 +98,4 @@ var detectNetwork = function(cardNumber) {
 
 
 
-console.log(detectNetwork('4900261234567890'))
+console.log(detectNetwork('4908261234567890'))

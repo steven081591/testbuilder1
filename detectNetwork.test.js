@@ -14,6 +14,13 @@ function prefixGenerator(start, stop) {
   return allnum;
 }
 
+
+// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
+// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
+
+
+
+
 var cards = [
   { 
     cardName: 'Diner\'s Club',
@@ -45,17 +52,19 @@ var cards = [
     length: [12,13,14,15,16,17,18,19],
     prefix: ['5018','5020','5038','6304']
   },
-  {  
-    cardName: 'Switch',
-    length: [16,18,19],
-    prefix: ['4903', '4905', '4911', '4936', '6333', '6759', '633110']
-  },
   {
     cardName: 'China UnionPay',
     length: [16,17,18,19],
-    prefix: [prefixGenerator(622126,622925), prefixGenerator(624,626), prefixGenerator(6282,6288)]
+    prefix: prefixGenerator(622126,622925).concat(prefixGenerator(624,626).concat( prefixGenerator(6282,6288)))
+  },
+  {
+   cardName: 'Switch',
+    length: [16,18,19],
+    prefix: ['4903','4905','4911','4936','564182','633110','6333','6759']
   }
 ]
+
+// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
 
 function allCards(name) {
 
@@ -108,9 +117,13 @@ describe('Discover', function() {
   allCards('Maestro')
 });
  
- describe('China UnionPay', function()) {
+ describe('China UnionPay', function() {
    allCards('China UnionPay')
- }
+ })
+
+ describe('Switch', function() {
+   allCards('Switch')
+ })
 
 // Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
 
