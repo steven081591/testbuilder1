@@ -45,7 +45,7 @@ var cards = [
   {
     cardName: 'China UnionPay',
     length: [16,17,18,19],
-    prefix: prefixGenerator(622126,622925).concat(prefixGenerator(624,626).concat( prefixGenerator(6282,6288)))
+    prefix: prefixGenerator(622126,622925).concat(prefixGenerator(624,626).concat(prefixGenerator(6282,6288)))
   },
   {
    cardName: 'Switch',
