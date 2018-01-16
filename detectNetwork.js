@@ -89,5 +89,3 @@ var detectNetwork = function(cardNumber) {
 };
 
 
-
-console.log(detectNetwork('4908261234567890'))
